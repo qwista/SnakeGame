@@ -2,6 +2,7 @@
 #include "apple.hpp"
 #include "snake.hpp"
 #include "board.hpp"
+#include "painter.hpp"
 
 class GameEngine {
    Apple _apple;
@@ -12,3 +13,4 @@ public:
    void Init();
    void Run();
 };
+
