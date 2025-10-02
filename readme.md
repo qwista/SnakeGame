@@ -1,38 +1,58 @@
-1. Denumire: SnakeGame
-2. Jocul clasic "Snake", implementat in C++, utilizand o structura modulara cu clase si fisiere header.
-3. Reguli: 
+# SnakeGame
 
--Sarpele se deplaseaza pe o tabla dreptunghiulara
--Pe tabla apare un mar pe care sarpele trebuie sa il manance
--De fiecare data cand mananca un mar, sarpele creste in lungime
--Jocul se termină daca sarpele se loveste de marginea tablei sau de propriul corp
+## 1. Denumire
+SnakeGame
 
-4\. Tipuri de date declarate
+## 2. Descriere
+Jocul clasic "Snake", implementat în C++, utilizând o structură modulară cu clase și fișiere header.
 
--struct Point
+## 3. Reguli
+- Sarpele se deplasează pe o tablă dreptunghiulară.  
+- Pe tablă apare un măr pe care sarpele trebuie să-l mănânce.  
+- De fiecare dată când mănâncă un măr, sarpele crește în lungime.  
+- Jocul se termină dacă sarpele se lovește de marginea tablei sau de propriul corp.
 
-Reprezinta o pozitie pe tabla prin coordonatele x si y
+## 4. Tipuri de date și clase
+- **struct Point** – Reprezintă o poziție pe tablă prin coordonatele x și y.  
+- **class Apple** – Reprezintă un măr plasat pe tablă, are o poziție de tip Point.  
+- **enum class Direction** – Reprezintă direcția de deplasare a șarpelui.  
+- **class Snake** – Reprezintă șarpele din joc, format dintr-un șir de segmente de tip Point.  
+- **class Board** – Reprezintă tabla de joc, are dimensiuni (lungime și lățime).  
+- **class GameEngine** – Reprezintă motorul jocului, gestionează șarpele, merele, tabla și logica jocului.  
+- **class Painter** – Reprezintă componenta care desenează elementele jocului pe ecran și afișează text.
 
--class Apple
+## 5. Construirea proiectului
 
-Reprezinta un mar plasat pe tabla, are o pozitie de tip Point
+### 5.1 Compilare
+Deschide terminalul în folderul proiectului și rulează:
 
--enum class Direction
-Reprezinta directia de deplasare a sarpelui
+```bash
+mingw32-make
+```
 
--class snake
+Aceasta va compila toate fișierele `.cpp` și va genera executabilul `Snake.exe`.
 
-Reprezinta sarpele din joc, format dintr-un sir de segmente de tip Point
+### 5.2 Curățare
+Pentru a șterge fișierele obiect și executabilul generate:
 
--class Board 
-Reprezinta tabla de joc, are dimensiuni (lungime si latime)
+```bash
+mingw32-make clean
+```
 
--class GameEngine
-Reprezinta motorul jocului, gestioneaza sarpele, merele, tabla si logica jocului
+### 5.3 Rulare
+După compilare, rulează jocul cu:
 
--class Painter
+```bash
+Snake.exe
+```
 
-Reprezinta componenta care va desena elementele jocului pe ecran si va afisa text 
+sau din terminal:
+
+```bash
+./Snake.exe
+```
+
+
 
 
 
