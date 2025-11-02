@@ -1,47 +1,36 @@
 #include "snake.hpp"
+#include <algorithm> 
 
-Snake::Snake() : _nr_segments(1) {
-    _segments[0] = {0, 0};
-}
+Snake::Snake() : _segments{{0, 0}} {}
 
-Snake::Snake(const Point& _position) : _nr_segments(1) {
-    _segments[0] = _position;
-}
+Snake::Snake(const Point& position) : _segments{position} {}
 
 void Snake::Move(Direction direction) {
-    
-    for (int i = _nr_segments - 1; i > 0; --i) {
+   
+    for (size_t i = _segments.size() - 1; i > 0; --i) {
         _segments[i] = _segments[i - 1];
     }
 
-    
+   
+    Point& head = _segments[0];
     switch (direction) {
-        case Direction::Top:
-            _segments[0].y -= 1;
-            break;
-        case Direction::Bottom:
-            _segments[0].y += 1;
-            break;
-        case Direction::Left:
-            _segments[0].x -= 1;
-            break;
-        case Direction::Right:
-            _segments[0].x += 1;
-            break;
+        case Direction::Top:    head.y -= 1; break;
+        case Direction::Bottom: head.y += 1; break;
+        case Direction::Left:   head.x -= 1; break;
+        case Direction::Right:  head.x += 1; break;
     }
 }
 
-int Snake::GetSize() const {
-    return _nr_segments;
+size_t Snake::GetSize() const {
+    return _segments.size();
 }
 
 Point Snake::GetPosition() const {
-    return _segments[0]; 
+    return _segments.empty() ? Point(0, 0) : _segments[0];
 }
 
 void Snake::Eat(const Apple& apple) {
-    if (_nr_segments < 100) {
-        _segments[_nr_segments] = _segments[_nr_segments - 1]; 
-        _nr_segments++;
+    if (!_segments.empty()) {
+        _segments.push_back(_segments.back()); 
     }
 }
