@@ -1,31 +1,31 @@
 all: SnakeGame
 
-SnakeGame: apple.o board.o direction.o game_engine.o painter.o point.o snake.o main.o
-	g++ -o Snake.exe apple.o board.o direction.o game_engine.o painter.o point.o snake.o main.o
+SnakeGame: game_engine.o main.o libgamedata.a sqlite3.o
+	g++ -o Snake.exe game_engine.o main.o libgamedata.a sqlite3.o
 
-apple.o:
-	g++ apple.cpp -o apple.o -c
-
-board.o:
-	g++ board.cpp -o board.o -c
-
-direction.o:
-	g++ direction.cpp -o direction.o -c
-
-game_engine.o:
-	g++ game_engine.cpp -o game_engine.o -c
-
-painter.o:
-	g++ painter.cpp -o painter.o -c
+libgamedata.a: point.o board.o apple.o snake.o
+	ar rcs libgamedata.a point.o board.o apple.o snake.o
 
 point.o:
-	g++ point.cpp -o point.o -c
+	g++ -c point.cpp -o point.o
+
+board.o:
+	g++ -c board.cpp -o board.o
+
+apple.o:
+	g++ -c apple.cpp -o apple.o
 
 snake.o:
-	g++ snake.cpp -o snake.o -c
+	g++ -c snake.cpp -o snake.o
+
+sqlite3.o:
+	gcc -c sqlite3.c -o sqlite3.o
+
+game_engine.o:
+	g++ -c game_engine.cpp -o game_engine.o
 
 main.o:
-	g++ main.cpp -o main.o -c
+	g++ -c main.cpp -o main.o
 
 clean:
-	del /Q *.o *.exe
+	del /Q *.o *.a *.exe
