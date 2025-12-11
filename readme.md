@@ -1,39 +1,31 @@
-1. Denumire: SnakeGame
-2. Jocul clasic "Snake", implementat in C++, utilizand o structura modulara cu clase si fisiere header.
-3. Reguli: 
+# SnakeGame
 
--Sarpele se deplaseaza pe o tabla dreptunghiulara
--Pe tabla apare un mar pe care sarpele trebuie sa il manance
--De fiecare data cand mananca un mar, sarpele creste in lungime
--Jocul se termină daca sarpele se loveste de marginea tablei sau de propriul corp
+## Descrierea proiectului
+Jocul clasic "Snake", implementat în C++, utilizând o structură modulară cu clase și fișiere header. Proiectul este dezvoltat în cadrul laboratoarelor de programare, cu accent pe OOP, documentație și testare.
 
-4\. Tipuri de date declarate
+## Descrierea regulilor jocului
+- Șarpele se deplasează pe o tablă dreptunghiulară.
+- Pe tablă apare un măr pe care șarpele trebuie să îl mănânce.
+- De fiecare dată când mănâncă un măr, șarpele crește în lungime.
+- Jocul se termină dacă șarpele se lovește de marginea tablei sau de propriul corp.
 
--struct Point
+## Tipuri de date declarate
+- **struct Point**: Reprezintă o poziție pe tablă prin coordonatele x și y.
+- **class Apple**: Reprezintă un măr plasat pe tablă, are o poziție de tip Point.
+- **enum class Direction**: Reprezintă direcția de deplasare a șarpelui (UP, DOWN, LEFT, RIGHT).
+- **class Snake**: Reprezintă șarpele din joc, format dintr-un șir de segmente de tip Point.
+- **class Board**: Reprezintă tabla de joc, are dimensiuni (lungime și lățime).
+- **class GameEngine**: Reprezintă motorul jocului, gestionează șarpele, merele, tabla și logica jocului.
+- **class Painter**: Reprezintă componenta care desenează elementele jocului pe ecran și afișează text.
 
-Reprezinta o pozitie pe tabla prin coordonatele x si y
+## Specificarea dependențelor proiectului
+- **Mediu de dezvoltare**: Visual Studio Code, CLion sau orice IDE compatibil cu C++.
+- **Compilator**: GCC sau Clang (C++11 sau superior).
+- **Biblioteci terțe**: 
+  - `<vector>`, `<iostream>` (standard C++).
+  - Google Test (gtest) pentru testare unitară – descarcă din https://github.com/google/googletest (versiune 1.14 sau superioară).
+- **Sistem de operare**: Compatibil cu Windows, Linux sau macOS.
 
--class Apple
-
-Reprezinta un mar plasat pe tabla, are o pozitie de tip Point
-
--enum class Direction
-Reprezinta directia de deplasare a sarpelui
-
--class snake
-
-Reprezinta sarpele din joc, format dintr-un sir de segmente de tip Point
-
--class Board 
-Reprezinta tabla de joc, are dimensiuni (lungime si latime)
-
--class GameEngine
-Reprezinta motorul jocului, gestioneaza sarpele, merele, tabla si logica jocului
-
--class Painter
-
-Reprezinta componenta care va desena elementele jocului pe ecran si va afisa text 
-
-
-
-
+## Descrierea modului de construire a aplicației
+1. Instalează dependențele (ex: gtest via submodule sau manual).
+2. Rulează CMake pentru a genera fișierele de build:
